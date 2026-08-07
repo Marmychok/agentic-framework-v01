@@ -7,6 +7,7 @@ This test suite provides comprehensive coverage for the ZincBank login functiona
 ## Test Credentials
 
 **Student User:**
+
 - Email: `student01@zinc.test`
 - Password: `9pJolA7GBQec`
 
@@ -105,11 +106,13 @@ src/
 ### Key Methods
 
 #### Navigation
+
 - `goto()` - Navigate to login page
 - `getCurrentUrl()` - Get current page URL
 - `isDashboardVisible()` - Check if redirected to dashboard
 
 #### Input Actions
+
 - `fillEmail(email)` - Fill email field
 - `fillPassword(password)` - Fill password field
 - `clearEmail()` - Clear email field
@@ -119,6 +122,7 @@ src/
 - `clickOpenAccount()` - Click account creation link
 
 #### Validations (without assertions - returns boolean)
+
 - `isEmailInputVisible()` - Check email field visibility
 - `isPasswordInputVisible()` - Check password field visibility
 - `isSignInButtonVisible()` - Check button visibility
@@ -129,6 +133,7 @@ src/
 - `isDashboardVisible()` - Check if on dashboard
 
 #### Data Retrieval
+
 - `getEmailValue()` - Get email input value
 - `getPasswordValue()` - Get password input value
 - `getErrorMessageText()` - Get error message content
@@ -181,16 +186,19 @@ src/
 ## Test Data Fixtures
 
 ### Valid Credentials
+
 ```typescript
 VALID_STUDENT_CREDENTIALS = {
   email: 'student01@zinc.test',
   password: '9pJolA7GBQec',
-  description: 'Valid student user credentials'
-}
+  description: 'Valid student user credentials',
+};
 ```
 
 ### Test Cases
+
 The `LOGIN_TEST_CASES` array contains 8 predefined test cases covering:
+
 - Valid credentials (success)
 - Missing email (validation error)
 - Missing password (validation error)
@@ -201,13 +209,17 @@ The `LOGIN_TEST_CASES` array contains 8 predefined test cases covering:
 - Different email format (error)
 
 ### Email Validation Cases
+
 Includes 8 test cases for valid and invalid email formats
 
 ### Password Strength Cases
+
 Includes 4 test cases for different password strength levels
 
 ### Error Messages
+
 Predefined expected error messages:
+
 - `INVALID_CREDENTIALS`
 - `EMAIL_REQUIRED`
 - `PASSWORD_REQUIRED`
@@ -218,16 +230,19 @@ Predefined expected error messages:
 - `SESSION_EXPIRED`
 
 ### User Roles
+
 Defines user roles (STUDENT, ADMIN, TEACHER) with expected behavior
 
 ## Running the Tests
 
 ### Run all login scenarios
+
 ```bash
 npm run test:cucumber tests/zinc-bank-login.feature
 ```
 
 ### Run specific tag
+
 ```bash
 npm run test:cucumber -- --tags "@positive"
 npm run test:cucumber -- --tags "@critical"
@@ -235,21 +250,22 @@ npm run test:cucumber -- --tags "@smoke"
 ```
 
 ### Run with reporting
+
 ```bash
 npm run test:cucumber -- --format html:reports/cucumber-report.html
 ```
 
 ## Test Coverage
 
-| Category | Count | Coverage |
-|----------|-------|----------|
-| Positive Scenarios | 2 | Happy path, login success |
-| Negative Scenarios | 5 | Invalid credentials, validation errors |
-| UI/UX Scenarios | 2 | Navigation, input masking |
-| Accessibility | 1 | WCAG labels |
-| Form Validation | 1 | Required fields |
-| Performance | 1 | Load time |
-| **Total** | **13** | **Comprehensive** |
+| Category           | Count  | Coverage                               |
+| ------------------ | ------ | -------------------------------------- |
+| Positive Scenarios | 2      | Happy path, login success              |
+| Negative Scenarios | 5      | Invalid credentials, validation errors |
+| UI/UX Scenarios    | 2      | Navigation, input masking              |
+| Accessibility      | 1      | WCAG labels                            |
+| Form Validation    | 1      | Required fields                        |
+| Performance        | 1      | Load time                              |
+| **Total**          | **13** | **Comprehensive**                      |
 
 ## Best Practices Applied
 
@@ -262,7 +278,7 @@ npm run test:cucumber -- --format html:reports/cucumber-report.html
 ✅ **Error Handling** - Graceful handling of navigation waits  
 ✅ **Reusable Methods** - Chainable actions in POM  
 ✅ **Auto-waiting** - Playwright's auto-waiting, no explicit timeouts  
-✅ **Security** - Password masking verification, no hardcoded secrets  
+✅ **Security** - Password masking verification, no hardcoded secrets
 
 ## Coding Standards Compliance
 

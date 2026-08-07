@@ -4,6 +4,7 @@
 Instruct the Cline agents to create a reusable Hooks template for Playwright test lifecycle management.
 
 **Prompt**
+
 ```
 Generate a TypeScript hooks template that extends Playwright’s base test with custom fixtures and global lifecycle hooks (beforeAll, afterEach, etc.). The template should:
 

@@ -1,10 +1,13 @@
 # Logging Skill
 
 ## Purpose
+
 Provide reusable logging utilities and guidelines for consistent, structured logging across the automation framework, complying with the rules in `.clinerules/logging.md` (if present) and general Cline standards.
 
 ## Examples
+
 - **Simple Logger Wrapper**
+
   ```typescript
   import { createLogger, format, transports } from 'winston';
 
@@ -14,7 +17,7 @@ Provide reusable logging utilities and guidelines for consistent, structured log
       format.timestamp(),
       format.errors({ stack: true }),
       format.splat(),
-      format.json()
+      format.json(),
     ),
     transports: [new transports.Console()],
   });
@@ -44,12 +47,15 @@ Provide reusable logging utilities and guidelines for consistent, structured log
   ```
 
 ## Reusable Prompts
+
 1. **Generate Logger**
+
    ```
    Create a TypeScript logger utility that supports levels INFO, WARN, ERROR, DEBUG, TRACE and respects LOG_LEVEL environment variable.
    ```
 
 2. **Add Logging to Agent**
+
    ```
    Insert logging statements into the <AgentName> agent at the start and end of each major method, using the logger utility.
    ```
@@ -60,6 +66,7 @@ Provide reusable logging utilities and guidelines for consistent, structured log
    ```
 
 ## Best Practices
+
 - Use a single logger instance per process and import it where needed.
 - Log at appropriate levels: `info` for high‑level flow, `debug` for detailed execution, `trace`/`verbose` for very fine‑grained data.
 - Never log secrets or sensitive data; mask them if necessary.
@@ -68,16 +75,19 @@ Provide reusable logging utilities and guidelines for consistent, structured log
 - Ensure logging does not impact test performance; avoid excessive synchronous I/O.
 
 ## Validation
+
 - The logger module must compile (`tsc`) and pass `npm run lint`.
 - No secret values should appear in the source code.
 - In CI, logs should be collected without causing job failures.
 - When executed, the logger should output valid JSON lines to stdout.
 
 ## Anti‑patterns
+
 - Logging entire objects that contain passwords or tokens.
 - Using `console.log` directly in production code; always go through the logger wrapper.
 - Over‑logging in tight loops, which can degrade performance.
 - Ignoring the `LOG_LEVEL` environment variable.
 
 ## Limitations
+
 - This skill provides only the logger utility and usage guidelines; it does not configure external log aggregation services (e.g., ELK, Datadog). Those integrations should be added via separate DevOps agents if required.

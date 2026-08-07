@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Review Agent (and its sub‑agents) to evaluate generated artefacts—features, page objects, components, locators, step definitions, etc.—against the project's coding standards, architectural rules, and best practices.
 
 **Prompt Template**
+
 ```
-You are the **Review Agent** (or a specific sub‑agent such as `playwright-reviewer`, `typescript-reviewer`, `pom-reviewer`, `naming‑reviewer`, `duplicate‑code‑detector`).  
+You are the **Review Agent** (or a specific sub‑agent such as `playwright-reviewer`, `typescript-reviewer`, `pom-reviewer`, `naming‑reviewer`, `duplicate‑code‑detector`).
 Given the following artefact content and its type, perform a comprehensive review and return:
 
 1. **Compliance Findings** – List any violations of applicable `.clinerules/*` (e.g., locator rules, naming conventions, coding standards).
@@ -13,8 +14,8 @@ Given the following artefact content and its type, perform a comprehensive revie
 3. **Lint/Format Issues** – Report any ESLint or Prettier problems.
 4. **Safety/Security Checks** – Flag hard‑coded secrets, insecure patterns, or missing input validation.
 
-**Artefact Type**: {{ARTIFACT_TYPE}}  
-**File Path**: {{FILE_PATH}}  
+**Artefact Type**: {{ARTIFACT_TYPE}}
+**File Path**: {{FILE_PATH}}
 
 **Content**:
 {{FILE_CONTENT}}
@@ -28,6 +29,7 @@ Given the following artefact content and its type, perform a comprehensive revie
 ```
 
 **Expected Output Example**
+
 ```
 ## Compliance Findings
 - ❌ Locator uses CSS selector instead of preferred `getByRole` (locator‑rules.md §1).
@@ -50,11 +52,13 @@ Given the following artefact content and its type, perform a comprehensive revie
 - [ ] Fix lint errors.
 - [ ] Remove hard‑coded secret.
 ```
+
 ```
 
-**Usage**  
+**Usage**
 The orchestrator injects the artefact’s type, path, and content into the placeholders before invoking the appropriate reviewer sub‑agent.
 
---- 
+---
 
 *File location:* `.cline/prompts/review.md`*
+```

@@ -1,10 +1,13 @@
 # Accessibility Skill
 
 ## Purpose
+
 Provide reusable utilities, testing patterns, and guidelines for verifying accessibility compliance of UI components using Playwright and aXe, following the standards in `.clinerules/accessibility.md` (if present) and Cline’s overall quality requirements.
 
 ## Examples
+
 - **aXe Integration Helper**
+
   ```typescript
   // utils/axe-helper.ts
   import { Page } from '@playwright/test';
@@ -13,13 +16,14 @@ Provide reusable utilities, testing patterns, and guidelines for verifying acces
   export const runAxeChecks = async (page: Page) => {
     const results = await new AxeBuilder({ page }).analyze();
     if (results.violations.length) {
-      const messages = results.violations.map(v => `${v.id}: ${v.description}`).join('\n');
+      const messages = results.violations.map((v) => `${v.id}: ${v.description}`).join('\n');
       throw new Error(`Accessibility violations detected:\n${messages}`);
     }
   };
   ```
 
 - **Automated Accessibility Test**
+
   ```typescript
   // tests/accessibility/login-accessibility.spec.ts
   import { test, expect } from '@playwright/test';
@@ -48,12 +52,15 @@ Provide reusable utilities, testing patterns, and guidelines for verifying acces
   ```
 
 ## Reusable Prompts
+
 1. **Add Axe Check**
+
    ```
    Insert an aXe accessibility check into the <PageName>Page test that fails the test if any violations are found.
    ```
 
 2. **Create Custom Reporter**
+
    ```
    Generate a Playwright reporter that logs a concise summary of aXe violations for each test.
    ```
@@ -64,6 +71,7 @@ Provide reusable utilities, testing patterns, and guidelines for verifying acces
    ```
 
 ## Best Practices
+
 - Run aXe checks **after** the page is fully loaded and all dynamic content is rendered.
 - Keep accessibility checks fast by limiting the scope to the component under test (e.g., using `page.locator('component-root')`).
 - Fail the test on any violation; do not treat accessibility warnings as optional.
@@ -71,14 +79,17 @@ Provide reusable utilities, testing patterns, and guidelines for verifying acces
 - Document any known false positives and suppress them with proper aXe rule configuration.
 
 ## Validation
+
 - The `runAxeChecks` utility must throw an error when violations exist and pass silently when none are found.
 - Tests that include the utility should fail in CI if accessibility issues are present.
 - The custom reporter should output a readable summary of violations without breaking the test run.
 
 ## Anti‑patterns
+
 - Skipping accessibility checks in flaky or slow tests.
 - Using `await page.waitForTimeout` to give aXe time to run; rely on Playwright’s auto‑waiting.
 - Ignoring violations by catching and suppressing errors.
 
 ## Limitations
+
 - This skill does not perform comprehensive accessibility audits across the entire application; it provides per‑page/component helpers. For full audits, integrate a dedicated accessibility testing pipeline (e.g., Lighthouse CI) via the `github-actions` skill.

@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Step Definition Generator agent to create a thin Cucumber step definition (`*.ts`) that invokes the appropriate Page or Component Objects without containing Playwright API calls, assertions, or business logic.
 
 **Prompt Template**
+
 ```
-You are the **Step Definition Generator**.  
+You are the **Step Definition Generator**.
 Given the following Gherkin step text and the related Page/Component Object methods, generate a TypeScript step definition that delegates to the existing objects.
 
 **Gherkin Step**:
@@ -25,21 +26,27 @@ Given the following Gherkin step text and the related Page/Component Object meth
 ```
 
 **Output**
+
 ```typescript
 import { Given } from '@cucumber/cucumber';
 import { LoginPage } from '../../src/pages/login.page';
 
-Given('the user logs in with username {string} and password {string}', async (username: string, password: string) => {
-  const loginPage = new LoginPage(page);
-  await loginPage.fillCredentials(username, password);
-  await loginPage.submit();
-});
-```
+Given(
+  'the user logs in with username {string} and password {string}',
+  async (username: string, password: string) => {
+    const loginPage = new LoginPage(page);
+    await loginPage.fillCredentials(username, password);
+    await loginPage.submit();
+  },
+);
 ```
 
-**Usage**  
+```
+
+**Usage**
 The orchestrator replaces `{{STEP_TEXT}}` and `{{OBJECT_METHODS}}` with concrete values before invoking the Step Definition Generator agent.
 
---- 
+---
 
 *File location:* `.cline/prompts/generate-step.md`*
+```

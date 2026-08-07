@@ -4,6 +4,7 @@
 Enable the Cline agents to automatically analyze a live website using the Playwright MCP, capture an accessibility snapshot, and generate BDD scenario files that cover the discovered UI elements.
 
 **Prompt**
+
 ```
 1. Use the Playwright MCP `browser_snapshot` tool to capture an accessibility snapshot of the target URL.
    - Set `depth` to 2 to get a concise view.
@@ -14,7 +15,7 @@ Enable the Cline agents to automatically analyze a live website using the Playwr
 3. For each identified element, generate a Cucumber scenario in a dedicated feature file under `tests/`. Use the existing Feature and Scenario templates (`.cline/templates/feature.md` and `.cline/templates/scenario.md`) with placeholders filled as follows:
    - **Feature Title** – `<PageName> UI Coverage`.
    - **Scenario Title** – `Verify <Element Description> is functional`.
-   - **Steps** – 
+   - **Steps** –
      * Given the user navigates to `<Page URL>`.
      * When the user interacts with the element (e.g., clicks the button, fills the input).
      * Then the expected outcome (e.g., element is visible, navigation occurs, data is saved) is asserted using Playwright `expect`.

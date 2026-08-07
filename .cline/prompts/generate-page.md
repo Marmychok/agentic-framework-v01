@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Page Object Generator agent to create a Playwright Page Object (`*.page.ts`) that follows the project’s Page Object Model rules.
 
 **Prompt Template**
+
 ```
-You are the **Page Object Generator**.  
+You are the **Page Object Generator**.
 Based on the following UI description and functional requirements, generate a TypeScript Page Object class that complies with `.clinerules/page-object-model.md` and `.clinerules/locator-rules.md`.
 
 **UI Description**:
@@ -25,6 +26,7 @@ Based on the following UI description and functional requirements, generate a Ty
 ```
 
 **Output**
+
 ```typescript
 import { Page } from '@playwright/test';
 
@@ -57,11 +59,13 @@ export class LoginPage {
   }
 }
 ```
+
 ```
 
-**Usage**  
+**Usage**
 The orchestrator substitutes `{{UI_DESCRIPTION}}` and `{{FUNCTIONAL_REQUIREMENTS}}` with concrete details before invoking the Page Object Generator agent.
 
---- 
+---
 
 *File location:* `.cline/prompts/generate-page.md`*
+```

@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Locator Generator agent to create robust locator definitions that follow the priority order defined in `.clinerules/locator-rules.md`.
 
 **Prompt Template**
+
 ```
-You are the **Locator Generator**.  
+You are the **Locator Generator**.
 Based on the following UI element description, produce the most appropriate locator expression(s) according to the Locator Rules.
 
 **Element Description**:
@@ -23,15 +24,18 @@ Based on the following UI element description, produce the most appropriate loca
 ```
 
 **Expected Output Example**
+
 ```typescript
 // Navigation menu button – accessible via role
 readonly menuButton = this.page.getByRole('button', { name: 'Menu' });
 ```
+
 ```
 
-**Usage**  
+**Usage**
 The orchestrator substitutes the placeholders before invoking the Locator Generator agent.
 
---- 
+---
 
 *File location:* `.cline/prompts/generate-locators.md`*
+```

@@ -4,6 +4,7 @@
 Direct agents to produce a TypeScript test‑data factory template for creating deterministic and random domain objects.
 
 **Prompt**
+
 ```
 Create a TypeScript test‑data template that:
 

@@ -4,6 +4,7 @@
 Instruct agents to produce a high‑level architecture markdown file that documents the layers, agents, sub‑agents, skills, templates, prompts, and rules of the Cline automation platform.
 
 **Prompt**
+
 ```
 Generate a complete Architecture Overview document in Markdown that includes:
 

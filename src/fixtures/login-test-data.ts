@@ -12,7 +12,12 @@ export interface LoginCredentials {
 export interface LoginTestCase {
   credentials: LoginCredentials;
   expectedResult: 'success' | 'error' | 'validation_error';
-  errorType?: 'invalid_credentials' | 'email_required' | 'password_required' | 'invalid_email_format' | 'user_not_found';
+  errorType?:
+    | 'invalid_credentials'
+    | 'email_required'
+    | 'password_required'
+    | 'invalid_email_format'
+    | 'user_not_found';
 }
 
 /**

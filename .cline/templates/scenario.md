@@ -4,6 +4,7 @@
 Provide a ready‑to‑use Gherkin scenario snippet that can be inserted into a feature file.
 
 **Template**
+
 ```gherkin
 Scenario: <Scenario Title>
   Given <precondition>
@@ -12,6 +13,7 @@ Scenario: <Scenario Title>
 ```
 
 **Guidelines**
+
 - Title case the scenario title.
 - Keep each step **business‑focused**; avoid UI selectors or implementation details.
 - Use the appropriate Gherkin keywords (`Given`, `When`, `Then`, `And`, `But`) as needed.

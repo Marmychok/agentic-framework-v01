@@ -16,10 +16,7 @@ export default defineConfig({
     timeout: 5_000,
   },
   fullyParallel: true,
-  reporter: [
-    ['list'],
-    ['allure-playwright'],
-  ],
+  reporter: [['list'], ['allure-playwright']],
   use: {
     baseURL: 'http://localhost:3000',
     trace: 'on-first-retry',

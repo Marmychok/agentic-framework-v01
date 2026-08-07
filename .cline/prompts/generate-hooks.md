@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Hooks Generator agent to create Cucumber hook implementations (`hooks/*.ts`) that manage test lifecycle events (setup, teardown, global fixtures) in accordance with project conventions.
 
 **Prompt Template**
+
 ```
-You are the **Hooks Generator**.  
+You are the **Hooks Generator**.
 Based on the requested hook type and any specific setup/teardown actions, generate a TypeScript hook file that integrates with the Playwright test environment.
 
 **Hook Type**: {{HOOK_TYPE}} (e.g., `BeforeAll`, `AfterEach`, `Before`, `After`)
@@ -23,6 +24,7 @@ Based on the requested hook type and any specific setup/teardown actions, genera
 ```
 
 **Expected Output Example**
+
 ```typescript
 import { BeforeAll, AfterAll } from '@cucumber/cucumber';
 import { chromium } from '@playwright/test';
@@ -39,11 +41,13 @@ AfterAll(async () => {
   await browser?.close();
 });
 ```
+
 ```
 
-**Usage**  
+**Usage**
 The orchestrator fills the placeholders before invoking the Hooks Generator agent.
 
---- 
+---
 
 *File location:* `.cline/prompts/generate-hooks.md`*
+```

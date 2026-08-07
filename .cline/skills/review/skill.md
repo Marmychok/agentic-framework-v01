@@ -1,10 +1,13 @@
 # Review Skill
 
 ## Purpose
+
 Offer reusable checklists, helper functions, and guidelines for performing code reviews of the automation framework, ensuring compliance with `.clinerules/review-checklist.md`, `.clinerules/coding-standards.md`, and Cline’s quality gates.
 
 ## Examples
+
 - **Automated Lint & Formatting Check**
+
   ```bash
   # scripts/lint-and-format.sh
   #!/bin/bash
@@ -16,6 +19,7 @@ Offer reusable checklists, helper functions, and guidelines for performing code 
   ```
 
 - **Static Analysis Helper**
+
   ```typescript
   // utils/static-analysis.ts
   import { execSync } from 'child_process';
@@ -47,12 +51,15 @@ Offer reusable checklists, helper functions, and guidelines for performing code 
   ```
 
 ## Reusable Prompts
+
 1. **Run Automated Review**
+
    ```
    Execute the lint-and-format script, then run the static analysis helper to ensure the codebase passes lint, format, and type‑check stages.
    ```
 
 2. **Generate Review Checklist**
+
    ```
    Produce a markdown checklist covering lint, formatting, type safety, locator priority, assertion placement, step definition coverage, security, and documentation updates.
    ```
@@ -63,6 +70,7 @@ Offer reusable checklists, helper functions, and guidelines for performing code 
    ```
 
 ## Best Practices
+
 - Run the **Automated Review** step as a pre‑commit hook (via Husky) and as part of the CI pipeline.
 - Keep the checklist **version‑controlled** in `.clinerules/review-checklist.md` and reference it in PR templates.
 - Encourage reviewers to tick each item before approving; any unchecked item blocks the **Human Approval** gate.
@@ -70,15 +78,18 @@ Offer reusable checklists, helper functions, and guidelines for performing code 
 - Ensure that any new dependencies are added to `package.json` and that `npm audit` passes.
 
 ## Validation
+
 - The `lint-and-format.sh` script must exit with status `0` when lint and Prettier succeed.
 - `runTsc()` must throw an error if `tsc --noEmit` reports any problems.
 - The generated checklist must be up‑to‑date with the current `.clinerules` files.
 
 ## Anti‑patterns
+
 - Skipping the review checklist because “the code looks fine”.
 - Manually editing the checklist in PRs without updating the source `.clinerules/review-checklist.md`.
 - Allowing `any` types or disabling lint rules in new code.
 
 ## Limitations
+
 - This skill does not perform semantic code review (e.g., design critiques) – those are handled by human reviewers and the **Human Approval Agent**.
 - Automated security scanning beyond `npm audit` (e.g., SAST tools) is out of scope for this skill but can be added via additional DevOps agents.

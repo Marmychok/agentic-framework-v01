@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Fixtures Generator agent to create test data fixtures (JSON files, factory functions, builders) that can be consumed by Cucumber step definitions and Playwright tests.
 
 **Prompt Template**
+
 ```
-You are the **Fixtures Generator**.  
+You are the **Fixtures Generator**.
 Based on the following domain model description and required test scenarios, generate fixture data in the appropriate format.
 
 **Domain Entity**: {{ENTITY_NAME}}
@@ -26,6 +27,7 @@ Based on the following domain model description and required test scenarios, gen
 ```
 
 **Expected Output Example (JSON)**
+
 ```json
 {
   "id": "user-123",
@@ -36,6 +38,7 @@ Based on the following domain model description and required test scenarios, gen
 ```
 
 **Expected Output Example (Factory)**
+
 ```typescript
 import { faker } from '@faker-js/faker';
 import { User } from '../models/user';
@@ -48,11 +51,13 @@ export const userFactory = (overrides?: Partial<User>): User => ({
   ...overrides,
 });
 ```
+
 ```
 
-**Usage**  
+**Usage**
 The orchestrator replaces the placeholders with concrete entity details before invoking the Fixtures Generator agent.
 
---- 
+---
 
 *File location:* `.cline/prompts/generate-fixtures.md`*
+```

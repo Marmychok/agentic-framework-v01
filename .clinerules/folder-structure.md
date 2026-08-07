@@ -1,6 +1,7 @@
 # Folder Structure Guidelines
 
 ## Top‑Level Layout
+
 ```
 project/
 ├── .cline/                     # Agent and skill definitions
@@ -42,6 +43,7 @@ project/
 ```
 
 ## Guidelines
+
 - **Keep all automation artefacts** (`pages`, `components`, `tests`, `steps`, `fixtures`) under the `src/` tree.
 - **Feature files** live in a dedicated `tests/` directory separate from Playwright spec files.
 - **Agent definitions** (`.cline/agents`) are markdown files describing each agent’s purpose and contract.
@@ -50,11 +52,13 @@ project/
 - **Configuration files** (ESLint, Prettier, Playwright, Cucumber) sit at the project root for tooling visibility.
 
 ## Maintenance
+
 - When adding a new major agent or capability, create a matching folder under `.cline/agents` and corresponding skill/template entries.
 - Keep the folder structure aligned with the **Architecture Overview** in `.clinerules/architecture.md`.
 - Regularly run lint and format checks to ensure files remain in their intended locations.
 
 ## Review Checklist
+
 - [ ] Directory layout matches the diagram above.
 - [ ] All automation artefacts are under `src/`.
 - [ ] Feature files are placed in `tests/`.

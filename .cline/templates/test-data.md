@@ -4,6 +4,7 @@
 Provide a starter TypeScript module for generating reusable test data, factories, and builders that can be consumed by fixtures, step definitions, or page objects.
 
 **Template**
+
 ```typescript
 // src/test-data/<entity>-factory.ts
 /**
@@ -60,6 +61,7 @@ export function createRandom(): <Entity> {
 ```
 
 **Guidelines**
+
 - Replace `<Entity>` with a PascalCase name that represents the domain object (e.g., `User`, `Order`).
 - Keep the factory pure (no side effects, no I/O). Use it in fixtures or test steps.
 - Do **not** include `expect` assertions.

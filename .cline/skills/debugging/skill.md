@@ -1,10 +1,13 @@
 # Debugging Skill
 
 ## Purpose
+
 Provide reusable debugging utilities, patterns, and guidelines for troubleshooting Playwright tests, TypeScript code, and AI‑agent workflows, adhering to the standards in `.clinerules/debugging.md` (if present) and general Cline best practices.
 
 ## Examples
+
 - **Playwright Trace Helper**
+
   ```typescript
   import { Page, test } from '@playwright/test';
 
@@ -19,9 +22,13 @@ Provide reusable debugging utilities, patterns, and guidelines for troubleshooti
   ```
 
 - **Error Wrapper for Agent Calls**
+
   ```typescript
   export class AgentError extends Error {
-    constructor(message: string, public readonly cause?: unknown) {
+    constructor(
+      message: string,
+      public readonly cause?: unknown,
+    ) {
       super(message);
       this.name = 'AgentError';
     }
@@ -49,12 +56,15 @@ Provide reusable debugging utilities, patterns, and guidelines for troubleshooti
   ```
 
 ## Reusable Prompts
+
 1. **Generate Debug Trace**
+
    ```
    Add Playwright tracing to the <AgentName> test suite, ensuring screenshots, snapshots, and source files are captured.
    ```
 
 2. **Create Error Handling Wrapper**
+
    ```
    Provide a TypeScript utility that wraps any async function and logs errors with stack traces, returning a standardized error object.
    ```
@@ -65,6 +75,7 @@ Provide reusable debugging utilities, patterns, and guidelines for troubleshooti
    ```
 
 ## Best Practices
+
 - Enable Playwright tracing only for failing tests or when a debugging flag is set to avoid performance overhead.
 - Use structured error classes (`AgentError`, `FrameworkError`) to convey context.
 - Keep debugging utilities separate from production code; guard them with environment checks (`process.env.NODE_ENV !== 'production'`).
@@ -72,14 +83,17 @@ Provide reusable debugging utilities, patterns, and guidelines for troubleshooti
 - Capture and store trace artifacts as CI artifacts for later analysis.
 
 ## Validation
+
 - The trace helper must start and stop tracing without errors and produce a `.zip` file.
 - Error wrappers must preserve the original stack trace and be type‑safe (`AgentError` extends `Error`).
 - All new code must pass `npm run lint` and `npm run format`.
 
 ## Anti‑patterns
+
 - Leaving tracing enabled for every test in CI, causing large artifact sizes.
 - Swallowing errors without re‑throwing or logging them.
 - Using `debugger` statements in production branches.
 
 ## Limitations
+
 - This skill does not provide remote debugging configuration (e.g., VS Code launch configs); those can be added via a separate DevOps or tooling agent if required.

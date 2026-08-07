@@ -4,6 +4,7 @@
 Provide a starter TypeScript Page Object class that follows the project’s Page Object Model rules and can be extended for any page in the application.
 
 **Template**
+
 ```typescript
 import { Page } from '@playwright/test';
 
@@ -47,6 +48,7 @@ export class <PageName>Page {
 ```
 
 **Guidelines**
+
 - Replace `<PageName>` with a PascalCase name (e.g., `LoginPage`).
 - Replace `<elementName>` and `<Button Name>` with descriptive, kebab‑case variable names.
 - Use the highest‑priority locator strategy (`getByTestId`, `getByRole`, etc.) per `.clinerules/locator-rules.md`.

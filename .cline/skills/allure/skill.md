@@ -1,10 +1,13 @@
 # Allure Skill
 
 ## Purpose
+
 Supply reusable utilities, configuration snippets, and best‑practice guidelines for generating Allure reports from Playwright test runs, adhering to `.clinerules/reporting.md` (if present) and Cline’s documentation standards.
 
 ## Examples
+
 - **Allure Reporter Configuration**
+
   ```typescript
   // playwright.config.ts
   import { defineConfig, devices } from '@playwright/test';
@@ -12,7 +15,10 @@ Supply reusable utilities, configuration snippets, and best‑practice guideline
   export default defineConfig({
     reporter: [
       ['list'],
-      ['allure-playwright', { outputFolder: 'allure-results', disableWebdriverStepsReporting: true }],
+      [
+        'allure-playwright',
+        { outputFolder: 'allure-results', disableWebdriverStepsReporting: true },
+      ],
     ],
     use: {
       // common settings
@@ -24,6 +30,7 @@ Supply reusable utilities, configuration snippets, and best‑practice guideline
   ```
 
 - **Adding Attachments in Tests**
+
   ```typescript
   // tests/example.spec.ts
   import { test, expect } from '@playwright/test';
@@ -52,12 +59,15 @@ Supply reusable utilities, configuration snippets, and best‑practice guideline
   ```
 
 ## Reusable Prompts
+
 1. **Configure Allure Reporter**
+
    ```
    Update playwright.config.ts to include the allure-playwright reporter with output folder "allure-results" and enable screenshot/video attachments on failure.
    ```
 
 2. **Add Test Attachment**
+
    ```
    Insert an Allure attachment of the page HTML after the test finishes, using the appropriate helper from allure-playwright.
    ```
@@ -68,6 +78,7 @@ Supply reusable utilities, configuration snippets, and best‑practice guideline
    ```
 
 ## Best Practices
+
 - Keep the **output folder** (`allure-results`) inside the project root and add it to `.gitignore`.
 - Attach **screenshots** and **videos** only on failure to keep report size manageable.
 - Use **labels** (feature, story, severity) to organize tests and enable selective report generation.
@@ -75,14 +86,17 @@ Supply reusable utilities, configuration snippets, and best‑practice guideline
 - Archive the generated `allure-report` as a CI artifact for stakeholder review.
 
 ## Validation
+
 - After a test run, the `allure-results` directory must contain `.json` files for each test and any attached media.
 - Running `npx allure serve allure-results` should launch a local server displaying the report without errors.
 - The configuration must pass `npm run lint` and TypeScript compilation.
 
 ## Anti‑patterns
+
 - Attaching large files (e.g., full page source) for every test; restrict attachments to failures.
 - Disabling the reporter or redirecting output to a non‑persistent location.
 - Forgetting to clean the `allure-results` folder between runs, leading to stale data.
 
 ## Limitations
+
 - This skill does not cover CI‑specific steps for publishing Allure reports to external services (e.g., Allure Docker, GitHub Pages). Those steps can be added via the `github-actions` skill or a dedicated DevOps agent.

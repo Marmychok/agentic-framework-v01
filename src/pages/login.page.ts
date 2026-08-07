@@ -32,40 +32,41 @@ export class LoginPage {
     this.passwordLabel = page.getByText('Password').first();
 
     // Form inputs - using accessibility selectors as primary
-    this.emailInput = page.getByLabel('Email', { exact: false }).or(
-      page.locator('input[type="email"]')
-    ).or(
-      page.locator('input[placeholder="you@example.com"]')
-    );
-    
-    this.passwordInput = page.getByLabel('Password', { exact: false }).or(
-      page.locator('input[type="password"]')
-    );
+    this.emailInput = page
+      .getByLabel('Email', { exact: false })
+      .or(page.locator('input[type="email"]'))
+      .or(page.locator('input[placeholder="you@example.com"]'));
+
+    this.passwordInput = page
+      .getByLabel('Password', { exact: false })
+      .or(page.locator('input[type="password"]'));
 
     // Buttons and links
     this.signInButton = page.getByRole('button', { name: 'Sign in' });
-    this.openAccountLink = page.getByRole('link', { name: 'Open an account' }).or(
-      page.getByText('Open an account')
-    );
+    this.openAccountLink = page
+      .getByRole('link', { name: 'Open an account' })
+      .or(page.getByText('Open an account'));
 
     // Error messages
-    this.errorMessage = page.locator('[role="alert"]').or(
-      page.locator('.error').or(
-        page.locator('[class*="error"]')
-      )
-    );
-    
-    this.emailErrorMessage = page.locator('[class*="error"][class*="email"]').or(
-      page.getByText('Email is required', { exact: false }).or(
-        page.getByText('Please enter a valid email', { exact: false })
-      )
-    );
+    this.errorMessage = page
+      .locator('[role="alert"]')
+      .or(page.locator('.error').or(page.locator('[class*="error"]')));
 
-    this.passwordErrorMessage = page.locator('[class*="error"][class*="password"]').or(
-      page.getByText('Password is required', { exact: false }).or(
-        page.getByText('Invalid password', { exact: false })
-      )
-    );
+    this.emailErrorMessage = page
+      .locator('[class*="error"][class*="email"]')
+      .or(
+        page
+          .getByText('Email is required', { exact: false })
+          .or(page.getByText('Please enter a valid email', { exact: false })),
+      );
+
+    this.passwordErrorMessage = page
+      .locator('[class*="error"][class*="password"]')
+      .or(
+        page
+          .getByText('Password is required', { exact: false })
+          .or(page.getByText('Invalid password', { exact: false })),
+      );
   }
 
   /**
@@ -189,7 +190,7 @@ export class LoginPage {
    */
   async getErrorMessageText(): Promise<string> {
     try {
-      return await this.errorMessage.textContent() || '';
+      return (await this.errorMessage.textContent()) || '';
     } catch {
       return '';
     }
@@ -214,7 +215,7 @@ export class LoginPage {
    */
   async getEmailErrorText(): Promise<string> {
     try {
-      return await this.emailErrorMessage.textContent() || '';
+      return (await this.emailErrorMessage.textContent()) || '';
     } catch {
       return '';
     }
@@ -225,7 +226,7 @@ export class LoginPage {
    */
   async getPasswordErrorText(): Promise<string> {
     try {
-      return await this.passwordErrorMessage.textContent() || '';
+      return (await this.passwordErrorMessage.textContent()) || '';
     } catch {
       return '';
     }

@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Debugging Agent (and its sub‑agents) to diagnose and resolve issues in generated artefacts, test runs, or framework configuration.
 
 **Prompt Template**
+
 ```
-You are the **Debugging Agent**.  
+You are the **Debugging Agent**.
 Given the following problem description, error logs, and relevant artefact snippets, investigate the cause and propose a concrete fix.
 
 **Problem Description**:
@@ -27,7 +28,8 @@ Given the following problem description, error logs, and relevant artefact snipp
 ```
 
 **Expected Output Example**
-```
+
+````
 Root Cause:
 - The selector `button[data-id="submit"]` is a brittle CSS selector; the element should be accessed via `getByRole('button', { name: 'Submit' })` per locator‑rules.md.
 
@@ -38,17 +40,20 @@ button[data-id="submit"]
 =======
 await this.page.getByRole('button', { name: 'Submit' })
 +++++++ REPLACE
-```
+````
 
 Verification:
+
 - Run `npm run test:ui` and confirm the failing scenario passes.
 - Check Playwright trace for successful click.
+
 ```
+
 ```
 
 **Usage**  
 The orchestrator substitutes `{{PROBLEM_DESCRIPTION}}`, `{{ERROR_LOGS}}`, and `{{FILE_PATHS_AND_SNIPPETS}}` before invoking the Debugging Agent.
 
---- 
+---
 
-*File location:* `.cline/prompts/debug.md`*
+_File location:_ `.cline/prompts/debug.md`*

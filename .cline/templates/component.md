@@ -4,6 +4,7 @@
 Provide a starter TypeScript Component Object class that follows the Component Object Model rules and can be reused across multiple pages.
 
 **Template**
+
 ```typescript
 import { Page } from '@playwright/test';
 
@@ -47,6 +48,7 @@ export class <ComponentName>Component {
 ```
 
 **Guidelines**
+
 - Replace `<ComponentName>` with a PascalCase name (e.g., `NavbarComponent`).
 - Replace `<elementName>` and `<Button Name>` with descriptive, kebab‑case variable names.
 - Use the highest‑priority locator strategy per `.clinerules/locator-rules.md`.

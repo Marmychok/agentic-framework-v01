@@ -4,6 +4,7 @@
 Provide a starter Gherkin feature file that follows the project’s BDD conventions and can be used as a basis for new features.
 
 **Template**
+
 ```gherkin
 @<TAG1> @<TAG2>
 Feature: <Feature Title>
@@ -38,6 +39,7 @@ Feature: <Feature Title>
 ```
 
 **Guidelines**
+
 - Use **Title Case** for feature and scenario titles.
 - Tag the feature with business‐relevant tags (e.g., `@ui`, `@smoke`).
 - Keep steps **business‑focused**, avoid UI implementation details.

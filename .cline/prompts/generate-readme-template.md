@@ -4,6 +4,7 @@
 Guide the agents to create a comprehensive README template for a Cline‑based automation project.
 
 **Prompt**
+
 ```
 Produce a Markdown README template that includes sections for:
 

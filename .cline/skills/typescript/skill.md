@@ -1,10 +1,13 @@
 # TypeScript Skill
 
 ## Purpose
+
 Provide reusable TypeScript utility snippets, type definitions, and best‑practice guidelines for the automation framework.
 
 ## Examples
+
 - **Snippet**: Strict `tsconfig.json` template.
+
   ```json
   {
     "compilerOptions": {
@@ -30,7 +33,9 @@ Provide reusable TypeScript utility snippets, type definitions, and best‑pract
   ```
 
 ## Reusable Prompts
+
 1. **Create Interface**
+
    ```
    Generate a TypeScript interface for <Entity> with fields:
    - <field1>: <type>
@@ -38,6 +43,7 @@ Provide reusable TypeScript utility snippets, type definitions, and best‑pract
    ```
 
 2. **Create Enum**
+
    ```
    Define a TypeScript enum named <EnumName> with values:
    - VALUE_ONE
@@ -51,6 +57,7 @@ Provide reusable TypeScript utility snippets, type definitions, and best‑pract
    ```
 
 ## Best Practices
+
 - Always enable `strict` mode.
 - Prefer `interface` for public contracts, `type` for unions.
 - Use `readonly` for immutable properties.
@@ -59,14 +66,17 @@ Provide reusable TypeScript utility snippets, type definitions, and best‑pract
 - Document public APIs with JSDoc.
 
 ## Validation
+
 - Code must pass `npm run lint` and `npm run format`.
 - No `any` usage; all types must be explicit.
 - Ensure generated `tsconfig.json` matches `.clinerules/typescript.md`.
 
 ## Anti‑patterns
+
 - Using `any` or `unknown` without justification.
 - Declaring global variables without `export`.
 - Mixing runtime logic with type definitions.
 
 ## Limitations
+
 - This skill does not generate test data or fixture files; see the `test-data` skill for that purpose.

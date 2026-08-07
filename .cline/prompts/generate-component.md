@@ -4,8 +4,9 @@
 Provide a reusable prompt for the Component Generator agent to create a Playwright Component Object (`*.component.ts`) that adheres to the Component Object Model rules.
 
 **Prompt Template**
+
 ```
-You are the **Component Generator**.  
+You are the **Component Generator**.
 Based on the following UI fragment description and interaction requirements, generate a TypeScript Component Object class that complies with `.clinerules/component-model.md` and `.clinerules/locator-rules.md`.
 
 **Component Description**:
@@ -25,6 +26,7 @@ Based on the following UI fragment description and interaction requirements, gen
 ```
 
 **Output**
+
 ```typescript
 import { Page } from '@playwright/test';
 
@@ -53,11 +55,13 @@ export class NavbarComponent {
   }
 }
 ```
+
 ```
 
-**Usage**  
+**Usage**
 The orchestrator substitutes `{{COMPONENT_DESCRIPTION}}` and `{{INTERACTION_REQUIREMENTS}}` with concrete details before invoking the Component Generator agent.
 
---- 
+---
 
 *File location:* `.cline/prompts/generate-component.md`*
+```

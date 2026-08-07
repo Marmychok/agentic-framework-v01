@@ -4,6 +4,7 @@
 Provide a starter TypeScript hooks file for Playwright test lifecycle events (e.g., beforeAll, afterEach) and custom helper functions.
 
 **Template**
+
 ```typescript
 import { test as base, Page } from '@playwright/test';
 
@@ -54,6 +55,7 @@ export const test = base.extend<TestFixtures>({
 ```
 
 **Guidelines**
+
 - Do **not** include `expect` assertions; those belong in test files or step definitions.
 - Keep hook logic lightweight; rely on Playwright’s auto‑waiting.
 - Use the highest‑priority locator strategy inside any fixture if you need to interact with the UI.

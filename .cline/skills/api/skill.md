@@ -1,10 +1,13 @@
 # API Skill
 
 ## Purpose
+
 Provide reusable utilities, request wrappers, and validation patterns for interacting with REST/GraphQL APIs from Playwright tests or agent workflows, following the guidelines in `.clinerules/api.md` (if present) and Cline’s security and coding standards.
 
 ## Examples
+
 - **Generic API Client Wrapper**
+
   ```typescript
   // utils/api-client.ts
   import fetch, { RequestInit, Response } from 'node-fetch';
@@ -14,7 +17,7 @@ Provide reusable utilities, request wrappers, and validation patterns for intera
 
   export const apiRequest = async (
     endpoint: string,
-    options: RequestInit = {}
+    options: RequestInit = {},
   ): Promise<Response> => {
     const url = `${baseUrl}${endpoint}`;
     const headers = {
@@ -36,6 +39,7 @@ Provide reusable utilities, request wrappers, and validation patterns for intera
   ```
 
 - **GraphQL Helper**
+
   ```typescript
   // utils/graphql.ts
   import { apiRequest } from './api-client';
@@ -67,12 +71,15 @@ Provide reusable utilities, request wrappers, and validation patterns for intera
   ```
 
 ## Reusable Prompts
+
 1. **Create API Client**
+
    ```
    Generate a TypeScript module `api-client.ts` that reads the base URL and token from environment variables, provides a generic `apiRequest` function, and a typed `getJson<T>` helper.
    ```
 
 2. **Add GraphQL Wrapper**
+
    ```
    Provide a `graphql.ts` utility that sends a GraphQL query with optional variables and returns the typed data, handling errors appropriately.
    ```
@@ -83,6 +90,7 @@ Provide reusable utilities, request wrappers, and validation patterns for intera
    ```
 
 ## Best Practices
+
 - Centralize all API interactions in a dedicated `utils/api-client` module.
 - Use **environment variables** for base URLs and authentication tokens; never hard‑code secrets.
 - Validate responses with **Zod schemas** (or a similar validator) to ensure contract compliance.
@@ -91,14 +99,17 @@ Provide reusable utilities, request wrappers, and validation patterns for intera
 - Log API request/response pairs using the `secureLog` wrapper to avoid leaking sensitive data.
 
 ## Validation
+
 - API utilities must compile (`tsc`) and pass lint.
 - Running the generated API test should succeed against the configured staging environment; failures must produce clear error messages.
 - Secrets must not appear in source code or logs (masked by `secureLog`).
 
 ## Anti‑patterns
+
 - Embedding API keys directly in request headers.
 - Ignoring HTTP error codes; always check `resp.ok`.
 - Using `any` for response payloads without validation.
 
 ## Limitations
+
 - This skill does not provide automated mock servers or contract testing frameworks; those can be added via separate `testing` or `devops` agents if required.

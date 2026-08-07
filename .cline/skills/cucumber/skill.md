@@ -1,10 +1,13 @@
 # Cucumber Skill
 
 ## Purpose
+
 Provide reusable Cucumber (BDD) snippets, Gherkin templates, and best‑practice guidelines for writing feature files and step definitions that integrate with the Playwright framework.
 
 ## Examples
+
 - **Feature Template**: Basic login feature.
+
   ```gherkin
   @ui @login
   Feature: User Login
@@ -60,12 +63,15 @@ Provide reusable Cucumber (BDD) snippets, Gherkin templates, and best‑practice
   ```
 
 ## Reusable Prompts
+
 1. **Generate Feature File**
+
    ```
    Create a feature file <feature-name>.feature for the scenario <description>. Include Background, Tags, and Scenario Outline if data‑driven.
    ```
 
 2. **Generate Step Definitions**
+
    ```
    Write step definitions in TypeScript for the steps in <feature-name>.feature using the Playwright Page Objects.
    ```
@@ -76,6 +82,7 @@ Provide reusable Cucumber (BDD) snippets, Gherkin templates, and best‑practice
    ```
 
 ## Best Practices
+
 - Keep feature files business‑focused; avoid UI implementation details.
 - Use **Background** for shared preconditions.
 - Prefer **Scenario Outline** with **Examples** for data‑driven tests.
@@ -85,17 +92,20 @@ Provide reusable Cucumber (BDD) snippets, Gherkin templates, and best‑practice
 - Use meaningful step names that read like natural language.
 
 ## Validation
+
 - Feature files must be valid Gherkin (`cucumber-js` parser passes).
 - Step definitions must compile with TypeScript and pass `npm run lint`.
 - No direct `expect` calls inside step definitions; assertions belong to Page/Component Objects.
 - All steps reference existing Page Objects or Component Objects.
 
 ## Anti‑patterns
+
 - Embedding CSS/XPath selectors inside step definitions.
 - Writing large blocks of test logic in steps instead of delegating.
 - Duplicating step definitions across multiple files without reuse.
 - Using hard‑coded URLs or credentials in steps.
 
 ## Limitations
+
 - This skill does not generate test data factories; see the `test-data` skill for that purpose.
 - Hook generation is limited to basic before/after hooks; complex lifecycle management should be handled by dedicated agents.

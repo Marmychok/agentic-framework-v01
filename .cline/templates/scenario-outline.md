@@ -4,6 +4,7 @@
 Provide a reusable Gherkin scenario outline that can be used when a scenario needs to be executed with multiple data sets.
 
 **Template**
+
 ```gherkin
 Scenario Outline: <Scenario Outline Title>
   Given <precondition>
@@ -17,6 +18,7 @@ Scenario Outline: <Scenario Outline Title>
 ```
 
 **Guidelines**
+
 - Title case the outline title.
 - Keep steps **business‑focused**; avoid UI selectors or technical details.
 - List only the parameters that vary between examples.
