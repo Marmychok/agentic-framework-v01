@@ -59,6 +59,11 @@ const { chromium } = require('playwright');
       if (btn) btn.removeAttribute('disabled');
     });
     await signUpBtn.click();
+    // Wait for navigation or success indicator
+    await page.waitForLoadState('networkidle');
+    // Capture a screenshot for audit
+    await page.screenshot({ path: 'explore_success.png', fullPage: true });
+    console.log('Form submitted and screenshot saved.');
 
     console.log('Form submitted successfully.');
   } catch (err) {

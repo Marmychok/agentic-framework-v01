@@ -92,6 +92,21 @@ Coordinate user requests, select appropriate domain agents, enforce human‑appr
 }
 ```
 
+**Explore & Automate Example**
+
+```text
+explore the page https://the-internet-5chk.onrender.com/registration_form and fill the form and click the Sign up button
+```
+
+When this request is received, the orchestrator will:
+1. Parse the URL and intent.
+2. Prompt the user for approval before proceeding.
+3. Execute the dedicated automation script (`registration_form_automation.js`) which:
+   - Navigates to the page.
+   - Fills all required fields (first name, last name, username, email, password, phone number, date of birth, job title, department, language selections, gender).
+   - Enables the **Sign up** button if necessary and clicks it.
+4. Report success or failure and log the outcome.
+
 **Common Mistakes**
 
 - Skipping the human‑approval step.

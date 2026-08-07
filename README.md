@@ -9,7 +9,9 @@ A production‑ready, AI‑first UI automation platform built on **Playwright**,
    ```bash
    npm ci
    ```
-
+    ```bash
+npm install --legacy-peer-deps
+```
 2. **Set up environment variables**
 
    ```bash
@@ -68,6 +70,21 @@ cline orchestrate "generate feature login for https://zincbank.cydeo.io/login wi
 ```
 
 The orchestrator parses the request, runs the appropriate agents, and automatically creates the feature, scenario, step definitions, and a page object.
+
+### Explore & Automate a Page
+
+Use the orchestrator to explore a live page, fill a form, and submit it in a single command:
+
+```bash
+npm run orchestrate "explore the page https://the-internet-5chk.onrender.com/registration_form and fill the form and click the Sign up button"
+```
+
+The orchestrator will:
+1. Prompt for a single human‑approval before proceeding.
+2. Run `registration_form_automation.js` which navigates to the URL, fills all required fields, forces the **Sign up** button to be enabled, clicks it, waits for the request to finish, and saves a screenshot (`explore_success.png`).
+3. Log the outcome and report success or failure.
+
+This provides a quick way to verify UI flows without writing manual Playwright scripts each time.
 
 ## Solution
 
