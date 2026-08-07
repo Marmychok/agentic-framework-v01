@@ -1,0 +1,17 @@
+digraph Cline {
+    rankdir=LR;
+    node [shape=box, style=filled, color=lightblue];
+
+    "Clinerules" -> "Agents" [label="guidelines for"];
+    "Clinerules" -> "Templates" [label="defines"];
+    "Clinerules" -> "Prompts" [label="specifies"];
+    "Clinerules" -> "Skills" [label="sets standards"];
+
+    "Agents" -> "Prompts" [label="use"];
+    "Agents" -> "Skills" [label="invoke"];
+    "Agents" -> "Templates" [label="output based on"];
+
+    "Prompts" -> "Templates" [label="guide"];
+    "Skills" -> "Templates" [label="provide snippets"];
+    "Templates" -> "Agents" [label="used by"];
+}
