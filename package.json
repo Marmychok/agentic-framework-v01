@@ -4,7 +4,7 @@
   "description": "AI‑first Playwright BDD automation framework built for Cline",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint . --ext .ts",
+    "lint": "eslint . --ext .ts --config eslint.config.js",
     "format": "prettier --write .",
     "test": "playwright test",
     "test:report": "playwright test --reporter=line,allure-playwright",

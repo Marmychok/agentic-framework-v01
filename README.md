@@ -69,6 +69,32 @@ cline orchestrate "generate feature login for https://zincbank.cydeo.io/login wi
 
 The orchestrator parses the request, runs the appropriate agents, and automatically creates the feature, scenario, step definitions, and a page object.
 
+## Solution
+
+To run the Cline CLI:
+
+1. **Install dependencies** (already completed with the legacy flag):
+   ```bash
+   npm install --legacy-peer-deps
+   ```
+
+2. **Use the CLI via `npx`** (or add a script):
+   ```bash
+   npx cline orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials student01@zinc.test / 9pJolA7GBQec"
+   ```
+
+   If you prefer a shortcut, add a script to `package.json`:
+   ```json
+   "scripts": {
+     "cline": "cline"
+   }
+   ```
+
+   Then run:
+   ```bash
+   npm run cline -- orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials student01@zinc.test / 9pJolA7GBQec"
+   ```
+
 ## Visualizing the Architecture Diagram
 
 The repository includes a Graphviz DOT file (`diagram.dot`) that illustrates the relationships between **Clinerules**, **Agents**, **Templates**, **Prompts**, and **Skills**.
@@ -139,6 +165,63 @@ cline run website-analyzer --url https://example.com/login
 ```
 
 You will be prompted to approve the generated scenarios before they are persisted.
+
+## Example: Generate Scenarios from Zinc Bank Login Page
+
+The following prompt demonstrates how to explore a live login page and automatically generate comprehensive Gherkin scenarios using the Orchestrator:
+
+**Prompt**
+
+```
+Explore the page https://zincbank.cydeo.io/login and generate scenarios with Email/Password as student01@zinc.test/9pJolA7GBQec
+```
+
+**Generated Gherkin Scenarios**
+
+```gherkin
+Feature: Zinc Bank User Login
+  As a Zinc Bank customer
+  I want to log in with my email and password
+  So that I can access my account
+
+  Background:
+    Given I navigate to "https://zincbank.cydeo.io/login"
+
+  Scenario: Successful login with valid credentials
+    When I fill the email field with "student01@zinc.test"
+    And I fill the password field with "9pJolA7GBQec"
+    And I click the "Sign in" button
+    Then I should be redirected to the dashboard page
+    And the page title should contain "Zinc Bank"
+
+  Scenario: Login attempt with empty email field
+    When I leave the email field empty
+    And I fill the password field with "9pJolA7GBQec"
+    And I click the "Sign in" button
+    Then I should see an error message indicating email is required
+
+  Scenario: Login attempt with empty password field
+    When I fill the email field with "student01@zinc.test"
+    And I leave the password field empty
+    And I click the "Sign in" button
+    Then I should see an error message indicating password is required
+
+  Scenario: Login attempt with invalid credentials
+    When I fill the email field with "invalid@test.com"
+    And I fill the password field with "wrongpassword"
+    And I click the "Sign in" button
+    Then I should see an error message indicating login failed
+
+  Scenario: Navigate to account creation from login page
+    When I click the "Open an account" link
+    Then I should be navigated to the account creation page
+```
+
+This example illustrates how the **Orchestrator** can automatically:
+- Analyze a live webpage using Playwright snapshots
+- Generate business‑focused Gherkin scenarios
+- Map UI elements to step definitions
+- Create corresponding Page Objects for interaction
 
 ## CI/CD Pipeline
 

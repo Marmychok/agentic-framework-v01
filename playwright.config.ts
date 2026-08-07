@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import type { ConfigOptions } from '@playwright/test';
+/* ConfigOptions import removed */
 
 /**
  * Playwright Test Configuration for the Cline Automation Platform.
@@ -48,4 +48,4 @@ export default defineConfig({
     timeout: 120_000,
     reuseExistingServer: true,
   },
-} as ConfigOptions);
+});
