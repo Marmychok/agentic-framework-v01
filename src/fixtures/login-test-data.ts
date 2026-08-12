@@ -24,8 +24,8 @@ export interface LoginTestCase {
  * Valid test credentials for student user
  */
 export const VALID_STUDENT_CREDENTIALS: LoginCredentials = {
-  email: 'student01@zinc.test',
-  password: '9pJolA7GBQec',
+  email: '****',
+  password: '*****',
   description: 'Valid student user credentials',
 };
 
@@ -35,16 +35,16 @@ export const VALID_STUDENT_CREDENTIALS: LoginCredentials = {
 export const LOGIN_TEST_CASES: LoginTestCase[] = [
   {
     credentials: {
-      email: 'student01@zinc.test',
-      password: '9pJolA7GBQec',
+      email: '****',
+      password: '*****',
       description: 'Valid credentials - Student user',
     },
     expectedResult: 'success',
   },
   {
     credentials: {
-      email: '',
-      password: '9pJolA7GBQec',
+      email: '****',
+      password: '*****',
       description: 'Missing email - Password provided',
     },
     expectedResult: 'validation_error',
@@ -52,8 +52,8 @@ export const LOGIN_TEST_CASES: LoginTestCase[] = [
   },
   {
     credentials: {
-      email: 'student01@zinc.test',
-      password: '',
+      email: '****',
+      password: '*****',
       description: 'Missing password - Email provided',
     },
     expectedResult: 'validation_error',
@@ -70,7 +70,7 @@ export const LOGIN_TEST_CASES: LoginTestCase[] = [
   },
   {
     credentials: {
-      email: 'student01@zinc.test',
+      email: '*****',
       password: 'wrongpassword123',
       description: 'Valid email - Incorrect password',
     },
@@ -79,8 +79,8 @@ export const LOGIN_TEST_CASES: LoginTestCase[] = [
   },
   {
     credentials: {
-      email: 'nonexistent@zinc.test',
-      password: '9pJolA7GBQec',
+      email: '****',
+      password: '*****',
       description: 'Unregistered email - Valid password',
     },
     expectedResult: 'error',
@@ -89,7 +89,7 @@ export const LOGIN_TEST_CASES: LoginTestCase[] = [
   {
     credentials: {
       email: 'invalid-email-format',
-      password: '9pJolA7GBQec',
+      password: '*****',
       description: 'Invalid email format - Valid password',
     },
     expectedResult: 'validation_error',
@@ -149,7 +149,7 @@ export const EMAIL_VALIDATION_CASES = [
  */
 export const PASSWORD_STRENGTH_CASES = [
   {
-    password: '9pJolA7GBQec',
+    password: '****',
     strength: 'strong',
     hasUppercase: true,
     hasLowercase: true,
@@ -201,20 +201,20 @@ export const ERROR_MESSAGES = {
  */
 export const USER_ROLES = {
   STUDENT: {
-    email: 'student01@zinc.test',
-    password: '9pJolA7GBQec',
+    email: '****',
+    password: '*****',
     role: 'STUDENT',
     expectedDashboard: '/dashboard',
   },
   ADMIN: {
-    email: 'admin@zinc.test',
-    password: 'adminPassword123',
+    email: '****',
+    password: '*****',
     role: 'ADMIN',
     expectedDashboard: '/admin',
   },
   TEACHER: {
-    email: 'teacher01@zinc.test',
-    password: 'teacherPassword123',
+    email: '****',
+    password: '*****',
     role: 'TEACHER',
     expectedDashboard: '/dashboard',
   },
