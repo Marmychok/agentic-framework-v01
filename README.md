@@ -39,7 +39,7 @@ The following CLI commands illustrate how to generate a feature file, scenario, 
 
 ```bash
 # Generate a feature named "login"
-cline generate feature --name login --url https://zincbank.cydeo.io/login
+cline generate feature --name login --url https://"*******'
 
 # Generate a scenario within the feature
 cline generate scenario --feature login --title "Login with valid credentials"
@@ -52,7 +52,7 @@ cline generate step \\
   --then "I should be redirected to the dashboard"
 
 # Generate a page object for the login page
-cline generate page --url https://zincbank.cydeo.io/login --name LoginPage
+cline generate page --url https://"*******" --name LoginPage
 ```
 
 These commands will create the necessary markdown feature, Gherkin scenario, TypeScript step definition files under `steps/`, and a Page Object class under `src/pages/`. After generation, run the test suite:
@@ -66,7 +66,7 @@ npm run test
 You can invoke Cline actions directly from a chat interface. For example:
 
 ```bash
-cline orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials student01@zinc.test / 9pJolA7GBQec"
+cline orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials "****"
 ```
 
 The orchestrator parses the request, runs the appropriate agents, and automatically creates the feature, scenario, step definitions, and a page object.
@@ -99,7 +99,7 @@ To run the Cline CLI:
 2. **Use the CLI via `npx`** (or add a script):
 
    ```bash
-   npx cline orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials student01@zinc.test / 9pJolA7GBQec"
+   npx cline orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials "******"
    ```
 
    If you prefer a shortcut, add a script to `package.json`:
@@ -113,7 +113,7 @@ To run the Cline CLI:
    Then run:
 
    ```bash
-   npm run cline -- orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials student01@zinc.test / 9pJolA7GBQec"
+   npm run cline -- orchestrate "generate feature login for https://zincbank.cydeo.io/login with credentials "*******"
    ```
 
 ## Visualizing the Architecture Diagram
@@ -195,7 +195,7 @@ The following prompt demonstrates how to explore a live login page and automatic
 **Prompt**
 
 ```
-Explore the page https://zincbank.cydeo.io/login and generate scenarios with Email/Password as student01@zinc.test/9pJolA7GBQec
+Explore the page https://zincbank.cydeo.io/login and generate scenarios with Email/Password as "********"
 ```
 
 **Generated Gherkin Scenarios**
@@ -207,23 +207,23 @@ Feature: Zinc Bank User Login
   So that I can access my account
 
   Background:
-    Given I navigate to "https://zincbank.cydeo.io/login"
+    Given I navigate to "*********"
 
   Scenario: Successful login with valid credentials
-    When I fill the email field with "student01@zinc.test"
-    And I fill the password field with "9pJolA7GBQec"
+    When I fill the email field with "*********"
+    And I fill the password field with "*******c"
     And I click the "Sign in" button
     Then I should be redirected to the dashboard page
-    And the page title should contain "Zinc Bank"
+    And the page title should contain "******"
 
   Scenario: Login attempt with empty email field
     When I leave the email field empty
-    And I fill the password field with "9pJolA7GBQec"
+    And I fill the password field with "******"
     And I click the "Sign in" button
     Then I should see an error message indicating email is required
 
   Scenario: Login attempt with empty password field
-    When I fill the email field with "student01@zinc.test"
+    When I fill the email field with "*******"
     And I leave the password field empty
     And I click the "Sign in" button
     Then I should see an error message indicating password is required
