@@ -48,7 +48,7 @@ cline generate scenario --feature login --title "Login with valid credentials"
 cline generate step \\
   --scenario login \\
   --given "I am on the login page" \\
-  --when "I fill in email \"student01@zinc.test\" and password \"9pJolA7GBQec\"" \\
+  --when "I fill in email \"*****" and password \"*******\"" \\
   --then "I should be redirected to the dashboard"
 
 # Generate a page object for the login page
