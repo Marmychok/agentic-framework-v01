@@ -1,3 +1,4 @@
+@(add file .cline/agents/orchestrator.js)
 # Orchestrator Agent
 
 **Name:** Orchestrator Agent
